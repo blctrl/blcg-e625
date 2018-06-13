@@ -1,0 +1,11 @@
+
+record(calc, "$(P)BraggEncAvg")
+{
+        field(DESC, "Avg Bragg Enc")
+        field(CALC, "(A+B)/2")
+	field(INPA, "$(P)$(m1).RBV")
+	field(INPB, "$(P)$(m2).RBV")
+        field(SCAN, "Passive")
+        field(EGU, "deg")
+        field(PINI, "YES")
+}       

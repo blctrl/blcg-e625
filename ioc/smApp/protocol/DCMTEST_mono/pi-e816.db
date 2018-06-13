@@ -1,0 +1,124 @@
+#(c) 2012 Bruker ASC GmbH
+
+record (stringin, "$(P):$(AXIS):read"){
+        field (DESC, "read-string")
+        field (DTYP, "stream")
+        field (INP,  "@pi-e816.proto read $(PORT)")
+        field (SCAN, "Passive")
+}
+
+record (stringout, "$(P):$(AXIS):write"){
+        field (DESC, "send-string")
+        field (DTYP, "stream")
+        field (OUT,  "@pi-e816.proto write $(PORT)")
+        field (SCAN, "Passive")
+        field (FLNK, "$(P):$(AXIS):read")
+}
+
+record (ao, "$(P):$(AXIS):mv")
+{
+        field (DESC, "Move absolut")
+        field (PREC, "3")
+        field (EGU, "um")
+        field (DTYP, "stream")
+        field (OUT, "@pi-e816.proto mv($(CHNL)) $(PORT)")
+	field (DRVH, "30")
+	field (DRVL, "0")
+	field (FLNK, "$(P):$(AXIS):mvangle")
+
+}
+
+record (ao, "$(P):$(AXIS):mvr")
+{
+        field (DESC, "Move relative")
+        field (PREC, "3")
+        field (EGU, "um")
+        field (DTYP, "stream")
+        field (OUT, "@pi-e816.proto mvr($(CHNL)) $(PORT)")
+	field (FLNK, "$(P):$(AXIS):mvrangle")
+}
+
+record (ai,"$(P):$(AXIS):position"){
+        field (DESC, "Position")
+        field (EGU, "um")
+        field (DTYP, "stream")
+        field (INP, "@pi-e816.proto pos($(CHNL)) $(PORT)")
+        field (SCAN, ".2 second")
+	field (FLNK, "$(P):$(AXIS):posangle")
+}
+
+record (ai,"$(P):$(AXIS):voltage"){
+        field (DESC, "Voltage")
+        field (EGU, "V")
+        field (DTYP, "stream")
+        field (INP, "@pi-e816.proto voltage($(CHNL)) $(PORT)")
+        field (SCAN, ".2 second")
+	field (PREC, "3")
+
+}
+
+record (ao,"$(P):$(AXIS):voltage:set:absolute"){
+        field (DESC, "Voltage")
+        field (EGU, "V")
+        field (DTYP, "stream")
+        field (OUT, "@pi-e816.proto sva($(CHNL)) $(PORT)")
+	field (PREC, "3")
+}
+
+record (ao,"$(P):$(AXIS):voltage:set:relative"){
+        field (DESC, "Voltage")
+        field (EGU, "V")
+        field (DTYP, "stream")
+        field (OUT, "@pi-e816.proto svr($(CHNL)) $(PORT)")
+	field (PREC, "3")
+}
+
+
+record (bo, "$(P):$(AXIS):servo:write")
+{
+        field (DESC, "Servo Mode on")
+        field (DTYP, "stream")
+        field (ZNAM, "off")
+        field (ONAM, "on")
+        field (OUT, "@pi-e816.proto svo($(CHNL)) $(PORT)")
+	field (FLNK, "$(P):$(AXIS):servo:read")
+}
+
+
+record (bi, "$(P):$(AXIS):servo:read")
+{
+        field (DESC, "Servo Mode status")
+        field (DTYP, "stream")
+        field (ZNAM, "off")
+        field (ONAM, "on")
+        field (INP, "@pi-e816.proto svo-read($(CHNL)) $(PORT)")
+        field (SCAN, "1 second")
+}
+
+record (calc, "$(P):$(AXIS):mvangle")
+{
+	field(DESC, "Move abs angle")
+	field(INPA, "$(P):$(AXIS):mv.VAL")
+	field(INPB, "$(SLOPE)")
+        field(CALC, "A*$(SLOPE)")
+	field(EGU, "arcsec")
+}
+
+record (calc, "$(P):$(AXIS):mvrangle")
+{
+	field(DESC, "Move absrel angle")
+	field(INPA, "$(P):$(AXIS):mvr.VAL")
+	field(INPB, "$(SLOPE)")
+        field(CALC, "A*$(SLOPE)")
+	field(EGU, "arcsec")
+}
+	
+
+record (calc, "$(P):$(AXIS):posangle")
+{
+	field(DESC, "current angle")
+	field(INPA, "$(P):$(AXIS):position.VAL")
+	field(INPB, "$(SLOPE)")
+        field(CALC, "A*$(SLOPE)")
+	field(EGU, "arcsec")
+}

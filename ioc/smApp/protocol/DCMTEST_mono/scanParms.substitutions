@@ -1,0 +1,18 @@
+file "db/X19U2_mono/scanParms.db"
+{
+{P=X19U2:OP:Mono:,SCANREC=X19U2:OP:Mono:scan1,Q=BraggTop,POS="$(Q).VAL",RDBK="$(Q).RBV"}
+{P=X19U2:OP:Mono:,SCANREC=X19U2:OP:Mono:scan1,Q=BraggBot,POS="$(Q).VAL",RDBK="$(Q).RBV"}
+{P=X19U2:OP:Mono:,SCANREC=X19U2:OP:Mono:scan1,Q=Pitch2,POS="$(Q).VAL",RDBK="$(Q).RBV"}
+{P=X19U2:OP:Mono:,SCANREC=X19U2:OP:Mono:scan1,Q=T2,POS="$(Q).VAL",RDBK="$(Q).RBV"}
+{P=X19U2:OP:Mono:,SCANREC=X19U2:OP:Mono:scan1,Q=Roll1,POS="$(Q).VAL",RDBK="$(Q).RBV"}
+{P=X19U2:OP:Mono:,SCANREC=X19U2:OP:Mono:scan1,Q=Z,POS="$(Q).VAL",RDBK="$(Q).RBV"}
+
+
+# Kohzu monochromator
+{P=X19U2:OP:Mono:,SCANREC=X19U2:OP:Mono:scan1,Q=BraggE,POS=BraggEAO.VAL,RDBK=BraggERdbkAO.VAL}
+{P=X19U2:OP:Mono:,SCANREC=X19U2:OP:Mono:scan1,Q=BraggLambda,POS=BraggLambdaAO.VAL,RDBK=BraggLambdaRdbkAO.VAL}
+{P=X19U2:OP:Mono:,SCANREC=X19U2:OP:Mono:scan1,Q=BraggTheta,POS=BraggThetaAO.VAL,RDBK=BraggThetaRdbkAO.VAL}
+
+
+
+}

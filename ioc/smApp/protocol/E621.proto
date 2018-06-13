@@ -1,0 +1,10 @@
+#StreamDevice protocol file for E625
+Terminator = LF;
+ReplyTimeout = 500;
+ReadTimeout = 500;
+
+
+getIDE621
+{
+	out "*IDN?"; in "%s";
+}

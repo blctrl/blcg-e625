@@ -1,0 +1,49 @@
+#(c) "2012" Bruker ASC GmbH
+terminator = LF;
+
+readtimeout = 5000;
+replytimeout = 5000;
+
+read {
+    in "%s";
+}   
+
+write {
+    out "%s";
+}
+
+mv {
+    out "MOV \$1 %f";
+}
+
+mvr {
+    out "MVR \$1 %f";
+}
+
+sva {
+    out "SVA \$1 %f";
+}
+
+svr {
+    out "SVR \$1 %f";
+}
+
+pos {
+    out "POS? \$1";
+    in "%f";
+}
+
+voltage {
+    out "VOL? \$1";
+    in "%f";
+}
+
+svo {
+    out "SVO \$1 %i";
+}
+
+svo-read {
+    out "SVO? \$1";
+    in "%i";
+}
+

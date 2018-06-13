@@ -1,0 +1,15 @@
+#StreamDevice protocol file for E625
+Terminator = CR;
+ReplyTimeout = 5000;
+ReadTimeout = 5000;
+
+open
+{
+	out "MN";
+}
+
+getst863
+{
+	out "TS"; in "%s";
+	@init { open; }	
+}

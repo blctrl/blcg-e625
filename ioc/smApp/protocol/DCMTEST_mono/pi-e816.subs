@@ -1,0 +1,4 @@
+file /home/blctrl/BL19U2-OP-IOC1/db/X19U2_mono/pi-e816.db {
+pattern{P, AXIS, SLOPE, CHNL, PORT}
+{X19U2:OP:Mono, Pitch2Piezo, 0.91, A, 19u2Pitch2Piezo}
+}

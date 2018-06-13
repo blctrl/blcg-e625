@@ -1,0 +1,10 @@
+##drvAsynSerialPortConfigure("e816-dev","/dev/ttyUSB0",0,0,0)
+##asynSetOption("e816-dev", -1, "baud", "115200")
+##asynSetOption("e816-dev", -1, "bits", "8")
+##asynSetOption("e816-dev", -1, "parity", "none")
+##asynSetOption("e816-dev", -1, "stop", "1")
+##asynSetOption("e816-dev", -1, "clocal", "Y")
+##asynSetOption("e816-dev", -1, "crtscts", "Y")
+
+drvAsynIPPortConfigure("19u1Pitch2Piezo","10.30.61.26:4001 TCP",0,0,0)
+

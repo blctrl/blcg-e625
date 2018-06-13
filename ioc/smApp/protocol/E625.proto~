@@ -1,0 +1,18 @@
+#StreamDevice protocol file for E625
+
+ReplyTimeout = 500;
+ReadTimeout = 500;
+f = 0xff;
+f1=$f "%f\?";
+getv
+{
+	out $1; in $f "%i";
+}
+getvLSB
+{
+	out 0x66; in $f "\?%f";
+}
+getvMSB
+{
+	out 0x66; in $f1;
+}

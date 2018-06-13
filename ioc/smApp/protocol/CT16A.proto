@@ -1,0 +1,28 @@
+#StreamDevice protocol file for E625
+
+ReplyTimeout = 500;
+ReadTimeout = 500;
+f = 0xff;
+f1=$f "%f\?";
+a = 0x02;
+b = 0x4C;
+c = 0x31;
+d = 0x41;
+e = 0x30;
+g = 0x44;
+h = 0x32;
+j = 0x03;
+a5 = 0x35;
+a4 = 0x34;
+b1 = 0x06;
+
+f1 = $a $b $c $d $e $e $g $h $j;
+f2 =  $a $b $c $d $a5 $e $e $a4 $e $e;
+getv
+{
+	out "\x02\x4C\x31\x41\x30\x30\x44\x32\x03"; 
+
+	in $f2 "%2d%(\$1)2r" $b1;
+}
+
+
